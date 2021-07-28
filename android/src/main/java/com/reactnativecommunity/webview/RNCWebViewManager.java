@@ -183,18 +183,14 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
     reactContext.addLifecycleEventListener(webView);
     mWebViewConfig.configWebView(webView);
     WebSettings settings = webView.getSettings();
-    settings.setBuiltInZoomControls(true);
-    settings.setDisplayZoomControls(false);
-    settings.setDomStorageEnabled(true);
     settings.setSupportMultipleWindows(true);
 
     settings.setAllowFileAccess(false);
-    settings.setAllowContentAccess(false);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
       settings.setAllowFileAccessFromFileURLs(false);
       setAllowUniversalAccessFromFileURLs(webView, false);
     }
-    setMixedContentMode(webView, "never");
+//     setMixedContentMode(webView, "never");
 
     // Fixes broken full-screen modals/galleries due to body height being 0.
     webView.setLayoutParams(
@@ -245,6 +241,31 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
     });
 
     return webView;
+  }
+
+  @ReactProp(name = "databaseEnabled")
+  public void setDatabaseEnabled(WebView view, boolean enabled) {
+    view.getSettings().setDatabaseEnabled(enabled);
+  }
+
+  @ReactProp(name = "loadWithOverviewMode")
+  public void setLoadWithOverviewMode(WebView view, boolean enabled) {
+    view.getSettings().setLoadWithOverviewMode(enabled);
+  }
+
+  @ReactProp(name = "useWideViewPort")
+  public void setUseWideViewPort(WebView view, boolean enabled) {
+    view.getSettings().setUseWideViewPort(enabled);
+  }
+
+  @ReactProp(name = "supportZoom")
+  public void setSupportZoom(WebView view, boolean enabled) {
+    view.getSettings().setSupportZoom(enabled);
+  }
+
+  @ReactProp(name = "builtInZoomControls")
+  public void setBuiltInZoomControls(WebView view, boolean enabled) {
+    view.getSettings().setBuiltInZoomControls(enabled);
   }
 
   @ReactProp(name = "javaScriptEnabled")
