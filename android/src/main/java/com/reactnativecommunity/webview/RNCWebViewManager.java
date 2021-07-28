@@ -1218,8 +1218,7 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
         }
       }
 
-      // String[] perms = {PermissionRequest.RESOURCE_PROTECTED_MEDIA_ID};
-      // request.grant(arrayOf(RESOURCE_PROTECTED_MEDIA_ID));
+      grantedPermissions.add(PermissionRequest.RESOURCE_PROTECTED_MEDIA_ID);
 
       // If all the permissions are already granted, send the response to the WebView synchronously
       if (requestedAndroidPermissions.isEmpty()) {
